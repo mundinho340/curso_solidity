@@ -1,14 +1,19 @@
 pragma solidity 0.8.7;
 
-
-contract listas{
+contract lista{
     string[] nome;
-
-    function salvarNome (string memory _nome ) external{
+    //colocar nome na lista
+    function addName(string memory _nome) external {
         nome.push(_nome);
     }
 
-    function visualizarNome(uint postion) external view returns(string memory){
+    //visualizar nome na lista
+    function viewName(uint position) external view returns(string memory){
         return nome[position];
+    }
+
+    //atualiar lista
+    function updateName(string memory _nome, uint _position) external{
+        nome[_position] = _nome;
     }
 }
