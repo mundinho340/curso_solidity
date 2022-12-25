@@ -8,7 +8,7 @@ contract listas{
         nome.push(_nome);
     }
 
-    function visualizarNome() external view returns(string memory){
-        return nome[];
+    function visualizarNome(uint postion) external view returns(string memory){
+        return nome[position];
     }
 }
