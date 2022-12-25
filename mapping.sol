@@ -2,15 +2,28 @@ pragma solidity 0.8.7;
 
 
 contract mappings{
-    mapping(address => uint ) saldos;
+   mapping(address => uint) saldos;
+   mapping(address => uint[]) pontuacao;
 
-    //depositar
-    function deposit() external payable{
-        saldos[msg.sender] += msg.value;
-    }
+   function depositar() external payable{
+       saldos[msg.sender] += msg.value;
+   }
 
-    //consultar saldo
-    function balanceOf() external view returns(uint256){
-        return saldos[msg.sender];
-    }
+   function verSaldo() external view returns(uint){
+       return saldos[msg.sender];
+   }
+
+   function salvarPontuacao(uint _pontuacao) external{
+       pontuacao[msg.sender].push(_pontuacao);
+   }
+
+   function premioEmToken() external view returns(uint){
+       uint somaPontuacao;
+
+       for(uint i; i<pontuacao[msg.sender].length;i++){
+           somaPontuacao+=pontuacao[msg.sender][i];
+
+       }
+       return somaPontuacao;
+   }
 }
