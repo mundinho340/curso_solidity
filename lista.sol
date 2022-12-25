@@ -12,8 +12,13 @@ contract lista{
         return nome[position];
     }
 
-    //atualiar lista
+    //atualiar nome na lista
     function updateName(string memory _nome, uint _position) external{
         nome[_position] = _nome;
+    }
+
+    //deletar nome na lista
+    function deleteName(string memory _nome, uint _position) external{
+        delete nome[_position];
     }
 }
