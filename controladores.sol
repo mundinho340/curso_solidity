@@ -7,5 +7,12 @@ contract controladores{
         addresses.push(_address);
     }
 
-    function 
+    function validar(address _address) external view returns (bool){
+        for(uint i; i< addresses.length;i++){
+            if(addresses[i] == _address){
+                return true;
+            }
+        }
+        return false;
+    }
 }
