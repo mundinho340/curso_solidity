@@ -7,4 +7,8 @@ contract categorias{
    function addUser() external{
        usuarios[msg.sender]=ESTADO.INATIVO;
    }
+
+   function viewState() external view returns(ESTADO){
+        reurns usuarios[msg.sender];
+   }
 }
