@@ -6,21 +6,22 @@ contract marketPlace{
         uint id;
         string nome;
     }
-    Usuarios [] public usuarios;
-    function addUsuarioImplicito(uint _id, string memory _nome) external{
-        Usuarios memory usuario1= Usuarios(msg.sender, _id, _nome);
+    Usuarios[] public usuarios;
+    function addUserImplicito(uint _id, string memory _nome) external{
+        Usuarios memory usuario1 = Usuarios(msg.sender,_id, _nome);
         usuarios.push(usuario1);
-
     }
 
-    function addUsuarioExplicito(uint _id , string memory _nome)external{
-        Usuarios memory usuario2 = Usuarios({wallet: msg.sender, id:_id, nome: _nome});
+    function addUserExplicit(uint _id, string memory _nome) external{
+        Usuarios memory usuario2= Usuarios({wallet: msg.sender, id: _id, nome: _nome});
         usuarios.push(usuario2);
     }
 
-    function addUsuariosBarato(uint _id,string memory _nome) external{
+    function addUserBarato(uint _id, string memory _nome) external{
         usuarios.push(Usuarios(msg.sender, _id, _nome));
     }
 
-
-}
+    function visualizar(uint _position) external view returns(string memory){
+        return usuarios[_position].nome;
+    }
+} 
