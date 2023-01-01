@@ -7,10 +7,14 @@ contract marketPlace{
         string nome;
     }
     Usuarios [] public usuarios;
-    function addUsuario(uint _id, string memory _nome) external{
+    function addUsuarioImplicito(uint _id, string memory _nome) external{
         Usuarios memory usuario1= Usuarios(msg.sender, _id, _nome);
         usuarios.push(usuario1);
 
+    }
+
+    function addUsuarioExplicito(uint _id , string memory nome)external{
+        Usuarios usuario2= Usuarios({wallet: msg.sender, id:_id, nome: _nome})
     }
 
 
