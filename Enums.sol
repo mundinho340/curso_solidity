@@ -1,14 +1,22 @@
 pragma solidity 0.8.7;
 
+
 contract categorias{
-   enum ESTADO{ATIVO, INATIVO, CANSELADO, CADASTRADO}
-   mapping(address => ESTADO) usuarios;
+    enum ESTADO{ATIVO, INATIVO, CANCELADO, CADASTRADO}
+    mapping(address => ESTADO) usuarios;
 
-   function addUser() external{
-       usuarios[msg.sender]=ESTADO.INATIVO;
-   }
+    function addUsers() external{
+        usuarios[msg.sender] = ESTADO.CADASTRADO;
+    }
 
-   function viewState() external view returns(ESTADO){
-        reurns usuarios[msg.sender];
-   }
+    function viewUser() external view returns (ESTADO){
+        return usuarios[msg.sender];
+    }
+
+    function calcula(uint _a, uint _b) external returns(uint){
+        require(usuarios[msg.sender] == ESTADO.CADASTRADO, "Erro usuario nao esta cadastrado");
+
+        uint resultado = _a+_b;
+        return resultado;
+    }
 }
