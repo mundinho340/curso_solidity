@@ -79,7 +79,9 @@ contract FundMe {
         return priceFeed.version();
     }
 
-        function gertConversionRate() public {}
+      function gertConversionRate(uint256 ethAmount) public view returns(uint256) {
+            uint256 ethPrice = getPrice;
+        }
 
     
     
