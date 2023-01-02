@@ -1,11 +1,12 @@
 pragma solidity 0.8.7;
 
-contract Eventos{
-    event Transferencia(address _deque, address _paraonde, uint256 _quantidade);
+contract teste{
+    event Transferencia(address origem, address destino, uint256 quantidade);
 
-    function trasfer(address indexed _praque, uint256 indexed _quantidade) public {
-        //codigos das verificacoes
+    function tranfer(address _destino, uint256 _quantidade) public {
 
-        emit Transferencia(msg.sender, _praque, _quantidade);
+
+        emit Transferencia(msg.sender, _destino, _quantidade);
     }
 }
+
