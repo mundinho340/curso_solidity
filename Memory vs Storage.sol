@@ -10,5 +10,7 @@ contract Armazenamento{
 
     function guardarNumero(string memory _texto) public {
         qualquerNumero=_texto;
+        //_texto = "outra coisa";
+        uint qualquerNumero =10;
     }
 }
