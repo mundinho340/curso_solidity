@@ -53,16 +53,23 @@ contract FundMe {
     function fund() public payable {
         //require(msg.value.getConversionRate() >= MINIMUM_USD, "You need to spend more ETH!");
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
-        addressToAmountFunded[msg.sender] += msg.value;
-        funders.push(msg.sender);
+        //addressToAmountFunded[msg.sender] += msg.value;
+       // funders.push(msg.sender);
+       require(msg.value >= MINIMUM_USD, "Didn't send enough!"); 
+       // 18  decimals     
+                
     }
 
-    function getPrice() public {
+    function getPrice()  public view returns(uint256) {
         //ABI
         //Address 
         //AggregatorV3Interface(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
         AggregatorV3Interface priceFeed =AggregatorV3Interface(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
-        priceFeed.latestRoundData();
+        (, int price,,,) =priceFeed.latestRoundData();
+        // ETH in terms of USD
+        // 3000.0000000
+
+          return uint256(price * 1e10); //1**10 == 1000000000 
     }
 
     
