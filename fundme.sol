@@ -80,8 +80,15 @@ contract FundMe {
     }
 
       function gertConversionRate(uint256 ethAmount) public view returns(uint256) {
-            uint256 ethPrice = getPrice;
-        }
+        uint256 ethPrice = getPrice();
+        //3000_000000000000000000 =ETH / USD price
+        //1_000000000000000000
+
+        uint256 ethAmountInUsd =(ethPrice* ethAmount)/ 1e18;
+        //2.999e21
+
+        return ethAmountInUsd;
+    }
 
     
     
