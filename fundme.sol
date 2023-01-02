@@ -12,7 +12,7 @@ interface AggregatorV3Interface {
   function description() external view returns (string memory);
 
   function version() external view returns (uint256);
-
+  
   function getRoundData(uint80 _roundId)
     external
     view
@@ -61,6 +61,8 @@ contract FundMe {
         //ABI
         //Address 
         //AggregatorV3Interface(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
+        AggregatorV3Interface priceFeed =AggregatorV3Interface(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
+        priceFeed.latestRoundData();
     }
 
     
