@@ -7,4 +7,8 @@ contract Armazenamento{
     function lerNumero() public returns (strig memory){
         return qualquerNumero;
     }
+
+    function guardarNumero(string memory _texto) public {
+        qualquerNumero=_texto;
+    }
 }
