@@ -12,4 +12,13 @@ contract modificadores{
     function mint(uint _valor) external onlyAdmin() somenteValor(_valor){
         suppy+= _valor;
     }
+
+    modifier onlyAdmin(){
+        require(msg.sender==admin,  "Nao eh o admin");
+
+    }
+
+    modifier somenteValor(uint _valor){
+        require(_valor ==10, "erro");
+    }
 }
