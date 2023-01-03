@@ -8,4 +8,8 @@ contract modificadores{
     function getSuppy() external view returns(uint){
         return supply;
     }
+
+    function mint(uint _valor) external onlyAdmin() somenteValor(_valor){
+        suppy+= _valor;
+    }
 }
