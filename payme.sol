@@ -10,4 +10,9 @@ contract pagaveis{
     function balance() external view returns(uint){
         return address(this).balance;
     }
+
+    function withDrawSend(uint _quantidade) external{
+         payable(msg.sender).send(_amount);
+    }
+}
 }
