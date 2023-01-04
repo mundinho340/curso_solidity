@@ -12,7 +12,11 @@ contract pagaveis{
     }
 
     function withDrawSend(uint _quantidade) external{
-         payable(msg.sender).send(_amount);
+         if(payable(msg.sender).send(_amount)){
+            return true;
+         }else{
+            return false;
+         }
     }
 }
 }
