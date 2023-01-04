@@ -16,4 +16,10 @@ contract construtor{
     function getSupply() external view returns(uint){
         return _totalSupply;
     }
+
+    contract B is A{
+        constructor(uint _valor, uint _valor0) A(_valor){
+            
+        }
+    }
 }
