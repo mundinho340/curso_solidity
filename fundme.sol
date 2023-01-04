@@ -8,7 +8,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 contract FundMe {
     //using PriceConverter for uint256;
 
-    mapping(address => uint256) public addressToAmountFunded;
+    mapping(address => uint256) public addressToAmountFounded;
     address[] public funders;
 
     // Could we make this constant?  /* hint: no! We should make it immutable! */
@@ -23,6 +23,7 @@ contract FundMe {
         //require(msg.value.getConversionRate() >= MINIMUM_USD, "You need to spend more ETH!");
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
         //addressToAmountFunded[msg.sender] += msg.value;
+        addressToAmountFunded[msg.sender] += msg.value;
          funders.push(msg.sender);
        require(msg.value >= MINIMUM_USD, "Didn't send enough!"); 
        // 18  decimals     
