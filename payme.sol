@@ -10,4 +10,17 @@ contract pagaveis{
     function balance() external view returns(uint){
         return address(this).balance;
     }
+
+    function withDrawSend(uint _quantidade) external returns (bool){
+         if(payable(msg.sender).send(_amount)){
+            return true;
+         }else{
+            return false;
+         }
+    }
+
+    function withDrawTransfer(uint _amount, address payable _endereco) external{
+        _endereco.transfer(_amount);
+    }
+}
 }
