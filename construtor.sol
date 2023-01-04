@@ -7,9 +7,13 @@ contract construtor{
     address admin;
 
 
-    constructor(){
+    constructor(uint initialSupply){
         _decimals =18;
         admin = msg.sender;
-        _totalSupply=100;
+        _totalSupply=initialSupply;
+    }
+
+    function getSupply() external view returns(uint){
+        return _totalSupply;
     }
 }
