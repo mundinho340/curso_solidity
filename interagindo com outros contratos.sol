@@ -7,3 +7,8 @@ contract A{
     }
 }
 
+contract B{
+    function retorna5() external pure returns(uint256){
+        return 5;
+    }
+}
