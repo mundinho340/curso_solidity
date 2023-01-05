@@ -3,7 +3,9 @@ pragma solidity 0.8.7;
 
 import "./InterfaceBalanceOf.sol"
 contract A{
-   
+   function getSaldo(address _contrato) external view returns(uint256){
+    return balanceOfInterface(-contracto).balanceOf(msg.sender);
+   }
 }
 
 
