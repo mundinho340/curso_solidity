@@ -10,9 +10,13 @@ contract A{
         //_contract = contracto;
         myInstance =IERC20(contracto);
     }
-    
+
    function getSaldo(address _contrato) external view returns(uint256){
     return balanceOfInterface(-contracto).balanceOf(msg.sender);
+   }
+
+   function getSaldo() external view returns(uint256){
+    return myInstance.balanceOf(msg.sender);
    }
 
 }
