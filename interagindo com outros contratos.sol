@@ -12,3 +12,11 @@ contract B{
         return 5;
     }
 }
+
+
+contract C {
+    function chamada(address _endereco) external returns(uint256){
+        return A(_endereco).retorna10();
+    }
+}
+
