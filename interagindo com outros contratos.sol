@@ -3,7 +3,26 @@ pragma solidity 0.8.7;
 
 import "./InterfaceBalanceOf.sol"
 contract A{
-   
+    address _contract;
+    IERC20 myInstance;
+
+    contructor(address contracto){
+        //_contract = contracto;
+        myInstance =IERC20(contracto);
+    }
+
+   function getSaldo(address _contrato) external view returns(uint256){
+    return balanceOfInterface(-contracto).balanceOf(msg.sender);
+   }
+
+   function getSaldo() external view returns(uint256){
+    return myInstance.balanceOf(msg.sender);
+   }
+
+   function supply() external view returns(uint256){
+    return myInstance.totalSupply();
+   }
+
 }
 
 
