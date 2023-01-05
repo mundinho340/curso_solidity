@@ -19,6 +19,10 @@ contract A{
     return myInstance.balanceOf(msg.sender);
    }
 
+   function supply() external view returns(uint256){
+    return myInstance.totalSupply();
+   }
+
 }
 
 
