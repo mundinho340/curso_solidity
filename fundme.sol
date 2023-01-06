@@ -35,7 +35,19 @@ contract FundMe {
         // reset the array
         funders = new address[][0]; 
         // actually withdraw the funds
+            // transfer
+        // send
+        // call
+
+        // tranfer
+        payable(msg.sender).tranfer(address(this).balance);
+        // send
+        // call
+          // call
+        (bool callSuccess, bytes dataReturned)=payable(msg.sender).call{value: address(this).balance}("");
     }
+
+    
 
 }
 
