@@ -20,7 +20,7 @@ contract FundMe {
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
     addressToAmountFunded[msg.sender] += msg.value;
        funders.push(msg.sender);
-       require(msg.value >= MINIMUM_USD, "Didn't send enough!"); 
+       require(msg.value.conversionRate() >= MINIMUM_USD, "Didn't send enough!"); 
        // 18  decimals     
                 
     }
