@@ -1,18 +1,24 @@
-pragma solidity 0.8.9;
+pragma solidity 0.8.7;
 
 
-contract meuContrato{
-    uint numero =20;
+contract modificadores{
+    uint supply =10;
+    address admin = msg.sender;
 
-    function add() external returns(uint){
-        return numero;
+    function getSuppy() external view returns(uint){
+        return supply;
     }
 
-    function addView() external view returns(uint){
-        return numero;
+    function mint(uint _valor) external onlyAdmin() somenteValor(_valor){
+        suppy+= _valor;
     }
 
-    function soma(uint a, uint b) external pure returns(uint){
-        return a+b;
+    modifier onlyAdmin(){
+        require(msg.sender==admin,  "Nao eh o admin");
+
+    }
+
+    modifier somenteValor(uint _valor){
+        require(_valor ==10, "erro");
     }
 }
