@@ -20,10 +20,36 @@ contract FundMe {
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
     addressToAmountFunded[msg.sender] += msg.value;
        funders.push(msg.sender);
-       require(msg.value >= MINIMUM_USD, "Didn't send enough!"); 
+       require(msg.value.conversionRate() >= MINIMUM_USD, "Didn't send enough!"); 
        // 18  decimals     
                 
     }
+
+    function withdraw() public {
+        /* starting index, ending index, stop amount*/ 
+        for(uint256 funderIndex; funderIndex<funders.length ; funderIndex++){
+            //code
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder]=0;
+        }
+        // reset the array
+        funders = new address[][0]; 
+        // actually withdraw the funds
+            // transfer
+        // send
+        // call
+
+        // tranfer
+        payable(msg.sender).tranfer(address(this).balance);
+        // send
+        bool sendSuccess= payable(msg.sender).send(address(this).balance);
+        require(sendSuccess, "Send failed");
+        // call
+          // call
+        (bool callSuccess, bytes dataReturned)=payable(msg.sender).call{value: address(this).balance}("");
+    }
+
+    
 
 }
 
