@@ -15,6 +15,12 @@ contract FundMe {
     address public /* immutable */ i_owner;
     uint256 public constant MINIMUM_USD = 50 * 10 ** 18;
 
+    address public owners;
+
+    constructor(){
+        owners= msg.sender;
+    }
+
     function fund() public payable {
         //require(msg.value.getConversionRate() >= MINIMUM_USD, "You need to spend more ETH!");
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
@@ -33,7 +39,7 @@ contract FundMe {
             addressToAmountFunded[funder]=0;
         }
         // reset the array
-        funders = new address[][0]; 
+        funders = new address[](0); 
         // actually withdraw the funds
             // transfer
         // send
@@ -47,6 +53,12 @@ contract FundMe {
         // call
           // call
         (bool callSuccess, bytes dataReturned)=payable(msg.sender).call{value: address(this).balance}("");
+    }
+
+    
+    modifier onlOwner(){
+        require(msg.sender == owners, "file user not owner");
+        _;
     }
 
     
