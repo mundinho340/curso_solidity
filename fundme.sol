@@ -39,7 +39,7 @@ contract FundMe {
             addressToAmountFunded[funder]=0;
         }
         // reset the array
-        funders = new address[][0]; 
+        funders = new address[](0); 
         // actually withdraw the funds
             // transfer
         // send
@@ -53,6 +53,12 @@ contract FundMe {
         // call
           // call
         (bool callSuccess, bytes dataReturned)=payable(msg.sender).call{value: address(this).balance}("");
+    }
+
+    
+    modifier onlOwner(){
+        require(msg.sender == owners, "file user not owner");
+        _;
     }
 
     
