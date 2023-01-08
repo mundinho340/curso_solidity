@@ -15,6 +15,12 @@ contract FundMe {
     address public /* immutable */ i_owner;
     uint256 public constant MINIMUM_USD = 50 * 10 ** 18;
 
+    address public owners;
+
+    constructor(){
+        owners= msg.sender;
+    }
+
     function fund() public payable {
         //require(msg.value.getConversionRate() >= MINIMUM_USD, "You need to spend more ETH!");
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
