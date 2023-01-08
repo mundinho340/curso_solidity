@@ -15,3 +15,4 @@ contract B{
     }
 }
 //function recive-> receive() external payable{}
+/*ABI stands for "Application Binary Interface." In the context of Solidity, the ABI is a specification of how data is encoded and decoded when it is sent to or received from a smart contract on the Ethereum blockchain. The ABI is important because it allows external systems to interact with the smart contract, by specifying exactly how data should be formatted when it is passed to the smart contract and how the results of the contract's execution should be interpreted. The ABI is typically generated automatically from the Solidity code of the smart contract and is used by clients that want to call the contract's functions or read its state. */
