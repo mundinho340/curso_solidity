@@ -2,9 +2,9 @@ pragma solidity 0.8.7;
 
 
 contract A{
-    uint public a;
-    function setVar(uint _var) external{
-        a=_var;
+   bool public fallbackCalled;
+    fallback() external payable{
+        fallbackCalled= true;
     }
 }
 
