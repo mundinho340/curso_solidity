@@ -27,4 +27,9 @@ contract A{
     function encodePack(string memory x, string memory y) external pure returns(bytes memory){
         return abi.encodePacked(x,y);
     }
+
+    
+    function encodeWithSelector(byte sel, string memory x, string memory y) external pure returns(bytes memory){
+        return abi.encodeWithSelector(x, y);
+    }
 }
