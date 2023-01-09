@@ -18,4 +18,8 @@ contract A{
      function hash(string memory s) external pure returns(bytes32){
         return bytes32(keccak256(bytes(s)));
     }
+
+     function encode(string memory x, string memory y) external pure returns(bytes memory){
+        return abi.encode(x,y);
+    }
 }
