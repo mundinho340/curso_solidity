@@ -10,4 +10,12 @@ contract A{
     function returnB(string memory s) external pure returns(bytes memory){
         return bytes(s);
     }
+
+     function byt4(string memory s) external pure returns(bytes4){
+        return bytes4(keccak256(bytes(s)));
+    }
+
+     function hash(string memory s) external pure returns(bytes32){
+        return bytes32(keccak256(bytes(s)));
+    }
 }
