@@ -29,7 +29,7 @@ contract A{
     }
 
     
-    function encodeWithSelector(byte sel, string memory x, string memory y) external pure returns(bytes memory){
-        return abi.encodeWithSelector(x, y);
+      function encodedWithSelector(bytes4 sel, string memory x, string memory y) external pure returns(bytes memory){
+        return abi.encodeWithSelector(sel,x, y);
     }
 }
