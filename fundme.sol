@@ -58,6 +58,8 @@ contract FundMe {
         _;
     }
 
+    receive()
+
 }
 
 // Concepts we didn't cover yet (will cover in later sections)
