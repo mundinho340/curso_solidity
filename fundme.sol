@@ -12,56 +12,49 @@ contract FundMe {
     address[] public funders;
 
     // Could we make this constant?  /* hint: no! We should make it immutable! */
-    address public /* immutable */ i_owner;
-    uint256 public constant MINIMUM_USD = 50 * 10 ** 18;
+    address public  i_owner;
+    //	23,622 -> immutable
+    //  23.644 -> non-immutable
+     uint256 public  MINIMUM_USD = 50 * 1e8;
+    // 23,000 -> non-constant
+    // 21,438 -> constant 
+    // 21,438 * 25000000000 =535.950.000.000.000
 
-    address public owners;
+   // address public  owners;
 
     constructor(){
-        owners= msg.sender;
+        i_owner= msg.sender;
     }
 
     function fund() public payable {
         //require(msg.value.getConversionRate() >= MINIMUM_USD, "You need to spend more ETH!");
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
-    addressToAmountFunded[msg.sender] += msg.value;
-       funders.push(msg.sender);
-       require(msg.value.conversionRate() >= MINIMUM_USD, "Didn't send enough!"); 
+        addressToAmountFunded[msg.sender] += msg.value;
+        funders.push(msg.sender);
+        require(msg.value.getConversionRate()>= MINIMUM_USD, "Didn't send enough!"); 
        // 18  decimals     
                 
     }
 
     function withdraw() public {
-        /* starting index, ending index, stop amount*/ 
+         /* starting index, ending index, stop amount*/ 
         for(uint256 funderIndex; funderIndex<funders.length ; funderIndex++){
             //code
             address funder = funders[funderIndex];
             addressToAmountFunded[funder]=0;
         }
-        // reset the array
+        // reset th e array
         funders = new address[](0); 
         // actually withdraw the funds
-            // transfer
-        // send
         // call
-
-        // tranfer
-        payable(msg.sender).tranfer(address(this).balance);
-        // send
-        bool sendSuccess= payable(msg.sender).send(address(this).balance);
-        require(sendSuccess, "Send failed");
-        // call
-          // call
-        (bool callSuccess, bytes dataReturned)=payable(msg.sender).call{value: address(this).balance}("");
+        (bool callSuccess, )=payable(msg.sender).call{value: address(this).balance}("");
+        require(callSuccess, "call failed");
     }
 
-    
     modifier onlOwner(){
-        require(msg.sender == owners, "file user not owner");
+        require(msg.sender == i_owner, "file user not owner");
         _;
     }
-
-    
 
 }
 
