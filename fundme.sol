@@ -25,6 +25,7 @@ contract FundMe {
     constructor(){
         i_owner= msg.sender;
     }
+    error notOwner();
 
     function fund() public payable {
         //require(msg.value.getConversionRate() >= MINIMUM_USD, "You need to spend more ETH!");
@@ -52,7 +53,8 @@ contract FundMe {
     }
 
     modifier onlOwner(){
-        require(msg.sender == i_owner, "file user not owner");
+        //require(msg.sender == i_owner, "file user not owner");
+        if(msg.sender != i_owner){revert notOwner();}
         _;
     }
 
