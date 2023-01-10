@@ -10,10 +10,11 @@ contract FundMe {
     using PriceConverter for uint256;
     mapping(address => uint256) public addressToAmountFunded;
     address[] public funders;
+    error notOwner();
 
     // Could we make this constant?  /* hint: no! We should make it immutable! */
-    address public  i_owner;
-    //	23,622 -> immutable
+    address public  immutable i_owner;
+    //	21.508 -> immutable
     //  23.644 -> non-immutable
      uint256 public  MINIMUM_USD = 50 * 1e8;
     // 23,000 -> non-constant
@@ -52,11 +53,22 @@ contract FundMe {
     }
 
     modifier onlOwner(){
-        require(msg.sender == i_owner, "file user not owner");
+        //require(msg.sender == i_owner, "file user not owner");
+        if(msg.sender != i_owner){revert notOwner();}
         _;
     }
 
+    receive() external payable{
+        fund();
+    }
+
+    fallback() external payable{
+        fund();
+    }
+
 }
+
+// what happenies if someone sends this contract ETH without calling fund function
 
 // Concepts we didn't cover yet (will cover in later sections)
 // 1. Enum
@@ -65,3 +77,5 @@ contract FundMe {
 // 4. Function Selector
 // 5. abi.encode / decode
 // 6. Hash with keccak256
+
+// i completed course basic is solidity
